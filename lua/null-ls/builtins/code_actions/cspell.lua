@@ -44,8 +44,8 @@ local create_cspell_json = function(cwd, file_name)
     }
     local cspell_json_str = vim.json.encode(cspell_json)
     local cspell_json_file_path = require("null-ls.utils").path.join(cwd or vim.loop.cwd(), file_name)
-    vim.fn.writefile({ cspell_json_str }, cspell_json_file_path)
-    vim.notify("Created a new cspell.json file at " .. cspell_json_file_path, vim.log.levels.INFO)
+    --vim.fn.writefile({ cspell_json_str }, cspell_json_file_path)
+    --vim.notify("Created a new cspell.json file at " .. cspell_json_file_path, vim.log.levels.INFO)
     return cspell_json_file_path
 end
 
@@ -119,25 +119,29 @@ return h.make_builtin({
                             or (create_config_file and create_cspell_json(params.cwd, create_config_file_name))
                             or nil
 
-                        if cspell_json_file == nil or cspell_json_file == "" then
-                            vim.notify("\nNo cspell json file found in the directory tree.\n", vim.log.levels.WARN)
-                            return
-                        end
+                        --if cspell_json_file == nil or cspell_json_file == "" then
+                        --    vim.notify("\nNo cspell json file found in the directory tree.\n", vim.log.levels.WARN)
+                        --    return
+                        --end
 
-                        local ok, cspell = pcall(vim.json.decode, table.concat(vim.fn.readfile(cspell_json_file), " "))
+                        --local ok, cspell = pcall(vim.json.decode, table.concat(vim.fn.readfile(cspell_json_file), " "))
 
-                        if not ok then
-                            vim.notify("\nCannot parse cspell json file as JSON.\n", vim.log.levels.ERROR)
-                            return
-                        end
+                        --if not ok then
+                        --    vim.notify("\nCannot parse cspell json file as JSON.\n", vim.log.levels.ERROR)
+                        --    return
+                        --end
 
-                        if not cspell.words then
-                            cspell.words = {}
-                        end
+                        --if not cspell.words then
+                        --    cspell.words = {}
+                        --end
 
-                        table.insert(cspell.words, word)
+                        --table.insert(cspell.words, word)
 
-                        vim.fn.writefile({ vim.json.encode(cspell) }, cspell_json_file)
+                        --vim.fn.writefile({ vim.json.encode(cspell) }, cspell_json_file)
+
+                        local directory_path = vim.fn.expand("$HOME/dev/dotfiles/dict/en.utf-8.add")
+                        vim.fn.writefile({word}, directory_path, "a")
+
 
                         -- replace word in buffer to trigger cspell to update diagnostics
                         vim.api.nvim_buf_set_text(
