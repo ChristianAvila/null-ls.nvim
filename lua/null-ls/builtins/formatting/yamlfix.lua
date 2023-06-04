@@ -4,17 +4,17 @@ local methods = require("null-ls.methods")
 local FORMATTING = methods.internal.FORMATTING
 
 return h.make_builtin({
-    name = "prismaFmt",
+    name = "yamlfix",
     meta = {
-        url = "https://github.com/prisma/prisma-engines",
-        description = "Formatter for the prisma filetype.",
+        url = "https://github.com/lyz-code/yamlfix",
+        description = "A configurable YAML formatter that keeps comments.",
     },
     method = FORMATTING,
-    filetypes = { "prisma" },
+    filetypes = { "yaml" },
     generator_opts = {
-        command = "prisma",
-        args = { "format", "$FILENAME" },
+        command = "yamlfix",
         to_stdin = true,
+        args = { "-" },
     },
     factory = h.formatter_factory,
 })

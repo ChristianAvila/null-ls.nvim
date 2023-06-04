@@ -4,16 +4,16 @@ local methods = require("null-ls.methods")
 local FORMATTING = methods.internal.FORMATTING
 
 return h.make_builtin({
-    name = "prismaFmt",
+    name = "swift_format",
     meta = {
-        url = "https://github.com/prisma/prisma-engines",
-        description = "Formatter for the prisma filetype.",
+        url = "https://github.com/apple/swift-format",
+        description = "Swift formatter from apple. Requires building from source with `swift build`",
     },
     method = FORMATTING,
-    filetypes = { "prisma" },
+    filetypes = { "swift" },
     generator_opts = {
-        command = "prisma",
-        args = { "format", "$FILENAME" },
+        command = "swift-format",
+        args = {},
         to_stdin = true,
     },
     factory = h.formatter_factory,
