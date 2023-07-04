@@ -190,6 +190,9 @@ return {
   json_tool = {
     filetypes = { "json" }
   },
+  jsonnetfmt = {
+    filetypes = { "jsonnet" }
+  },
   just = {
     filetypes = { "just" }
   },
@@ -294,6 +297,9 @@ return {
   },
   qmlformat = {
     filetypes = { "qml" }
+  },
+  racket_fixw = {
+    filetypes = { "racket" }
   },
   raco_fmt = {
     filetypes = { "racket" }

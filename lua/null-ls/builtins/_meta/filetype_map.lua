@@ -214,6 +214,9 @@ return {
   jsonc = {
     formatting = { "deno_fmt", "prettier", "prettier_d_slim", "prettier_eslint", "prettierd" }
   },
+  jsonnet = {
+    formatting = { "jsonnetfmt" }
+  },
   jsp = {
     diagnostics = { "pmd" }
   },
@@ -329,7 +332,7 @@ return {
     formatting = { "format_r", "styler" }
   },
   racket = {
-    formatting = { "raco_fmt" }
+    formatting = { "racket_fixw", "raco_fmt" }
   },
   rego = {
     diagnostics = { "opacheck" },

@@ -2263,6 +2263,23 @@ local sources = { null_ls.builtins.diagnostics.twigcs }
 - Command: `twigcs`
 - Args: `{ "--reporter", "json", "$FILENAME" }`
 
+### [typos](https://github.com/crate-ci/typos)
+
+Source code spell checker written in rust
+
+#### Usage
+
+```lua
+local sources = { null_ls.builtins.diagnostics.typos }
+```
+
+#### Defaults
+
+- Filetypes: `{}`
+- Method: `diagnostics`
+- Command: `typos`
+- Args: `{ "--format", "json", "-" }`
+
 ### [vacuum](https://quobix.com/vacuum)
 
 The world’s fastest and most scalable OpenAPI linter.
@@ -3236,7 +3253,7 @@ local sources = { null_ls.builtins.formatting.fourmolu }
 - Filetypes: `{ "haskell" }`
 - Method: `formatting`
 - Command: `fourmolu`
-- Args: `{ "--stdin-input-file", "$FILEPATH" }`
+- Args: `{ "--stdin-input-file", "$FILENAME" }`
 
 ### [fprettify](https://github.com/pseewald/fprettify)
 
@@ -3513,6 +3530,23 @@ local sources = { null_ls.builtins.formatting.jq }
 - Filetypes: `{ "json" }`
 - Method: `formatting`
 - Command: `jq`
+
+### [jsonnetfmt](https://github.com/google/jsonnet)
+
+Formats jsonnet files.
+
+#### Usage
+
+```lua
+local sources = { null_ls.builtins.formatting.jsonnetfmt }
+```
+
+#### Defaults
+
+- Filetypes: `{ "jsonnet" }`
+- Method: `formatting`
+- Command: `jsonnetfmt`
+- Args: `{ "-" }`
 
 ### [json_tool](https://docs.python.org/3/library/json.html#module-json.tool)
 
@@ -4132,9 +4166,9 @@ local sources = { null_ls.builtins.formatting.pyink }
 #### Defaults
 
 - Filetypes: `{ "python" }`
-- Method: `formatting`
+- Methods: `formatting, range_formatting`
 - Command: `pyink`
-- Args: `{ "--stdin-filename", "$FILENAME", "--quiet", "-" }`
+- Args: dynamically resolved (see [source](https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/lua/null-ls/builtins/formatting/pyink.lua))
 
 ### [qmlformat](https://doc-snapshots.qt.io/qt6-dev/qtquick-tools-and-utilities.html#qmlformat)
 
@@ -4152,6 +4186,27 @@ local sources = { null_ls.builtins.formatting.qmlformat }
 - Method: `formatting`
 - Command: `qmlformat`
 - Args: `{ "-i", "$FILENAME" }`
+
+### [racket_fixw](https://github.com/6cdh/racket-fixw)
+
+A Racket formatter that add/remove some whitespaces but respects newline.
+
+#### Usage
+
+```lua
+local sources = { null_ls.builtins.formatting.racket_fixw }
+```
+
+#### Defaults
+
+- Filetypes: `{ "racket" }`
+- Method: `formatting`
+- Command: `raco`
+- Args: `{ "fixw" }`
+
+#### Notes
+
+- Install with `raco pkg install fixw`
 
 ### [raco_fmt](https://docs.racket-lang.org/fmt/)
 
